@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>OpenSearch</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            min-height: 100%;
+            font-family: Arial, sans-serif;
+            background: white;
+        }
+
+        .page {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .search-area {
+            width: 96%;
+            max-width: 1900px;
+            margin: 55px auto 0;
+            display: flex;
+            align-items: center;
+            gap: 45px;
+        }
+
+        .logo {
+            width: 360px;
+            height: auto;
+            flex: 0 0 360px;
+            display: block;
+        }
+
+        .search {
+            flex: 1 1 auto;
+            min-width: 0;
+            width: 100%;
+        }
+
+        .search-area.results .logo {
+            display: none;
+        }
+
+        .search-area.results .search {
+            width: 100%;
+            flex: 1 1 100%;
+        }
+
+        .search-area.results {
+            gap: 0;
+        }
+
+        .footer {
+            margin-top: auto;
+            padding: 25px 15px;
+            text-align: center;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .footer a {
+            color: #666;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 1100px) {
+            .search-area {
+                width: 97%;
+                gap: 30px;
+            }
+
+            .logo {
+                width: 280px;
+                flex-basis: 280px;
+            }
+        }
+
+        @media (max-width: 750px) {
+            .search-area {
+                display: block;
+                width: 94%;
+                margin-top: 40px;
+            }
+
+            .logo {
+                width: 300px;
+                max-width: 90%;
+                margin: 0 auto 25px;
+            }
+
+            .search {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="page">
+
+    <div class="search-area" id="searchArea">
+
+        <img
+            id="logo"
+            class="logo"
+            src="https://i.ibb.co/1YbFgVmm/IMG-1332.png"
+            alt="OpenSearch"
+        >
+
+        <div class="search">
+
+            <script async src="https://cse.google.com/cse.js?cx=a0b1acb2ee4be48bd"></script>
+
+            <div class="gcse-search"></div>
+
+        </div>
+
+    </div>
+
+    <div class="footer">
+        Powered By Google Programmable Search Engine |
+        By DanDevProjects |
+        <a href="#">Visit my repo on GitHub!</a>
+    </div>
+
+</div>
+
+<script>
+function watchForResults() {
+    const searchArea = document.getElementById("searchArea");
+
+    const observer = new MutationObserver(function() {
+        const results = document.querySelector(".gsc-results");
+
+        if (results && results.children.length > 0) {
+            searchArea.classList.add("results");
+            observer.disconnect();
+        }
+    });
+
+    observer.observe(document.body, {
+        childList: true,
+        subtree: true
+    });
+}
+
+window.addEventListener("load", function() {
+    watchForResults();
+});
+</script>
+
+</body>
+</html>
