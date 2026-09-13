@@ -74,3 +74,4 @@ All trademarks, logos, and service names belong to their respective owners.
 **DanDevProjects**
 
 [GitHub](https://github.com/DanDevProjects)
+Note: This project is a new version of the archived OneSearch.
